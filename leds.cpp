@@ -20,13 +20,13 @@ int led::write_map(int v, int vmin, int vmax) {
 }
 
 void led::set_brightness(stream* s) {
-    int range = s->cal.max - s->cal.min;
-    max_brightness = 255 * (s->smoothedValue - s->cal.min) / range;
-    min_brightness = 255 * (s->cal.max - s->smoothedValue) / range;
+    int range = s->cal.max_ - s->cal.min_;
+    max_brightness = 255 * (s->smoothedValue - s->cal.min_) / range;
+    min_brightness = 255 * (s->cal.max_ - s->smoothedValue) / range;
 }
 
 int led::z_write(stream* s) {
-    write_map(s->smoothedValue, s->cal.min, s->cal.max);
+    write_map(s->smoothedValue, s->cal.min_, s->cal.max_);
 }
 
 int led::bell_write(stream* s) {
@@ -40,28 +40,28 @@ void rgb_led::write_rgb(int red, int green, int blue) {
     analogWrite(blue_pin, blue);
 }
 
-void rgb_led::write_ita(int intensity, int terra, int aqua) {
-    int blue = 3 * intensity - terra;
-    int red = 3 * intensity - aqua;
-    int green = terra + aqua - 3 * intensity;
-    write_rgb(red, green, blue);
-}
+// void rgb_led::write_ita(int intensity, int terra, int aqua) {
+//     int blue = 3 * intensity - terra;
+//     int red = 3 * intensity - aqua;
+//     int green = terra + aqua - 3 * intensity;
+//     write_rgb(red, green, blue);
+// }
 
 void rgb_led::demo() {
     for (int cy = 0; cy <= 255; cy += 50) {
-        for (int cz = 0; cz <= 255; cz += 50) {
+        for (int cz = 0; cz <= 255; cz += 100) {
             write_rgb(0, cy, cz);
         }
     }
 
     for (int cx = 0; cx <= 255; cx += 50) {
-        for (int cy = 0; cy <= 255; cy += 50) {
+        for (int cy = 0; cy <= 255; cy += 100) {
             write_rgb(cx, cy, 0);
         }
     }
 
     for (int cx = 0; cx <= 255; cx += 50) {
-        for (int cz = 0; cz <= 255; cz += 50) {
+        for (int cz = 0; cz <= 255; cz += 100) {
             write_rgb(cx, 0, cz);
         }
     }
