@@ -28,7 +28,6 @@ float R, G, B;
 void setup() {
   redLed.write(255); // just for visual feedback
   pin_setup();
-  xyz.demo();
   calibrate_streams(10 SECONDS);
   redLed.write(0);
   t0 = millis();
