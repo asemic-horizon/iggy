@@ -53,8 +53,6 @@ int side_heat_sensor () {return analogRead(SIDE_HEAT_SENSOR_PIN);}
 int light_diff_sensor () {return abs(front_light_sensor() - side_light_sensor());}
 int light_ratio_sensor () {return front_light_sensor() / side_light_sensor();}
 int heat_diff_sensor () {return abs(heat_sensor() - side_heat_sensor());}
-int ld() { return front_light.diff();}
-int lsd() { return side_light.diff();}
 
 // a stream is an object with a history (so smoothing and time-differences are 
 // kept) and a calibration (that determines a sensor's actual range with 
@@ -66,6 +64,9 @@ stream heat = stream(&heat_sensor);
 stream side_heat = stream(&side_heat_sensor);
 stream heat_diff = stream(&heat_diff_sensor);
 stream light_ratio = stream(&light_ratio_sensor);
+
+int ld() { return front_light.diff();}
+int lsd() { return side_light.diff();}
 stream light_d = stream(&ld);
 stream side_light_d = stream(&lsd);
 

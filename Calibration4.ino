@@ -1,12 +1,11 @@
 #define verbose 1 // I'm using serial communications to "print debug" during development
-#define SECONDS * 1000
 
 #include "calstream.h" # provides sensor access
 #include "leds.h" # abstraction for LEDs
 #include "hw_layout.h" # maps hardware to sensors and leds and provides setup/update utilities
 
 // calibration inervals
-const unsigned long initialCalibration = 9 SECONDS; 
+const unsigned long initialCalibration = 9 SECONDS; // what? 
 const unsigned long runningCalibration = 4 SECONDS;   
 const unsigned long recalibrationEvery = 60 SECONDS; 
 

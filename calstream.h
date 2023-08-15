@@ -3,7 +3,6 @@
 
 #include <Arduino.h>
 
-#define SECONDS * 1000
 
 typedef int (*UpdateFunction)(); // a "sensor" (a function that reads values)
 
