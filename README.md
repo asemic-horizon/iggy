@@ -38,7 +38,7 @@ void loop() {
     t0 = millis();
   }
   heat.update(); // but note the update_sensors() utility in hw_layout.h
-  R += 255 * map(heat.zscore(), 
+  R = 255 * map(heat.zscore(), 
           -1.96,1.96,
           0,1) + map(side_heat.zscore(),-1.96,1.96,0,1);
 
