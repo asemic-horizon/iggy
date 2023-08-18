@@ -18,9 +18,9 @@ Your sketch file (ending in `.ino`) can then be quite simple:
 ```cpp
 #define SECONDS * 1000
 
-#include "calstream.h" # provides sensor access
-#include "leds.h" # abstraction for LEDs
-#include "hw_layout.h" # maps hardware to sensors and leds and provides setup/update utilities
+#include "calstream.h"
+#include "leds.h" 
+#include "hw_layout.h" // maps hardware to sensors and leds and provides setup/update utilities
 
 unsigned long t0 = 0; // restart with t0=millis() after each cycle
 float R, G, B;
